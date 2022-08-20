@@ -1,3 +1,4 @@
+/* Selecting the id of the HTML elements. */
 const trademark = document.querySelector('#marca');
 const year = document.querySelector('#year');
 const minimum = document.querySelector('#minimo');
@@ -9,9 +10,11 @@ const color = document.querySelector('#color');
 const results = document.querySelector('#resultado');
 
 
+/* Getting the current year and subtracting 10 years from it. */
 const max =  new Date().getFullYear();
 const min =  max - 10;
 
+/* An object that is used to store the values of the search. */
 const SearchResults = {
     marca: '',
     year: '',
@@ -23,6 +26,8 @@ const SearchResults = {
 }
 
 
+/* Adding an event listener to the DOMContentLoaded event. When the DOMContentLoaded event is fired,
+the ShowCars function is called. The ShowCars function is passed the autos array. */
 document.addEventListener('DOMContentLoaded', () => {
     ShowCars(autos);
 
@@ -80,6 +85,13 @@ transmision.addEventListener('change', (e) =>{
 });
 
 
+/**
+ * It creates a new option element, sets its value to the current value of the loop variable, and sets
+ * its text content to the same value. 
+ * 
+ * Then it appends the option to the select element.
+ * @param autos - the array of cars
+ */
 function ShowCars(autos){   
     CleanHTML(); 
     autos.forEach(car => {
@@ -122,6 +134,9 @@ function FillSelect() {
 }
 
 
+/**
+ * It filters the cars based on the user's input.
+ */
 function FiltCars(){
     const res = autos.filter(FiltTradeMark).filter(FiltYear).filter(FiltMinimum).filter(FiltMaximum).filter(FiltPuertas).filter(FillColors).filter(FillTransmision);
 
@@ -199,4 +214,6 @@ function FillColors(car){
     }
 
     return car;
+
+    const carded = 0;
 }
